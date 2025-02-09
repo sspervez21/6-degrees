@@ -10,7 +10,7 @@ schemes:
 - http
 swagger: "2.0"
 paths:
-  /calculate_degrees/{actorName}/{castRestriction}:
+  /calculate_degrees/{actorName}:
     get:
       operationId: "GetDegreesOfSeparation"
       parameters:
@@ -18,10 +18,6 @@ paths:
           name: actorName
           required: true
           type: string
-        - in: path
-          name: castRestriction
-          required: true
-          type: integer
       responses:
         200:
           description: "OK"

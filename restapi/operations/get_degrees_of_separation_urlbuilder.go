@@ -10,14 +10,11 @@ import (
 	"net/url"
 	golangswaggerpaths "path"
 	"strings"
-
-	"github.com/go-openapi/swag"
 )
 
 // GetDegreesOfSeparationURL generates an URL for the get degrees of separation operation
 type GetDegreesOfSeparationURL struct {
-	ActorName       string
-	CastRestriction int64
+	ActorName string
 
 	_basePath string
 	// avoid unkeyed usage
@@ -43,20 +40,13 @@ func (o *GetDegreesOfSeparationURL) SetBasePath(bp string) {
 func (o *GetDegreesOfSeparationURL) Build() (*url.URL, error) {
 	var _result url.URL
 
-	var _path = "/calculate_degrees/{actorName}/{castRestriction}"
+	var _path = "/calculate_degrees/{actorName}"
 
 	actorName := o.ActorName
 	if actorName != "" {
 		_path = strings.Replace(_path, "{actorName}", actorName, -1)
 	} else {
 		return nil, errors.New("actorName is required on GetDegreesOfSeparationURL")
-	}
-
-	castRestriction := swag.FormatInt64(o.CastRestriction)
-	if castRestriction != "" {
-		_path = strings.Replace(_path, "{castRestriction}", castRestriction, -1)
-	} else {
-		return nil, errors.New("castRestriction is required on GetDegreesOfSeparationURL")
 	}
 
 	_basePath := o._basePath

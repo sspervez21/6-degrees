@@ -254,7 +254,7 @@ func (o *Nr6degreesAPI) initHandlerCache() {
 	if o.handlers["GET"] == nil {
 		o.handlers["GET"] = make(map[string]http.Handler)
 	}
-	o.handlers["GET"]["/calculate_degrees/{actorName}/{castRestriction}"] = NewGetDegreesOfSeparation(o.context, o.GetDegreesOfSeparationHandler)
+	o.handlers["GET"]["/calculate_degrees/{actorName}"] = NewGetDegreesOfSeparation(o.context, o.GetDegreesOfSeparationHandler)
 }
 
 // Serve creates a http handler to serve the API over HTTP

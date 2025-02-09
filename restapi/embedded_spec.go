@@ -34,19 +34,13 @@ func init() {
     "version": "0.1.0"
   },
   "paths": {
-    "/calculate_degrees/{actorName}/{castRestriction}": {
+    "/calculate_degrees/{actorName}": {
       "get": {
         "operationId": "GetDegreesOfSeparation",
         "parameters": [
           {
             "type": "string",
             "name": "actorName",
-            "in": "path",
-            "required": true
-          },
-          {
-            "type": "integer",
-            "name": "castRestriction",
             "in": "path",
             "required": true
           }
@@ -123,19 +117,13 @@ func init() {
     "version": "0.1.0"
   },
   "paths": {
-    "/calculate_degrees/{actorName}/{castRestriction}": {
+    "/calculate_degrees/{actorName}": {
       "get": {
         "operationId": "GetDegreesOfSeparation",
         "parameters": [
           {
             "type": "string",
             "name": "actorName",
-            "in": "path",
-            "required": true
-          },
-          {
-            "type": "integer",
-            "name": "castRestriction",
             "in": "path",
             "required": true
           }

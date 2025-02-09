@@ -11,7 +11,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetDegreesOfSeparationParams creates a new GetDegreesOfSeparationParams object
@@ -36,11 +35,6 @@ type GetDegreesOfSeparationParams struct {
 	  In: path
 	*/
 	ActorName string
-	/*
-	  Required: true
-	  In: path
-	*/
-	CastRestriction int64
 }
 
 // BindRequest both binds and validates a request, it assumes that complex things implement a Validatable(strfmt.Registry) error interface
@@ -54,11 +48,6 @@ func (o *GetDegreesOfSeparationParams) BindRequest(r *http.Request, route *middl
 
 	rActorName, rhkActorName, _ := route.Params.GetOK("actorName")
 	if err := o.bindActorName(rActorName, rhkActorName, route.Formats); err != nil {
-		res = append(res, err)
-	}
-
-	rCastRestriction, rhkCastRestriction, _ := route.Params.GetOK("castRestriction")
-	if err := o.bindCastRestriction(rCastRestriction, rhkCastRestriction, route.Formats); err != nil {
 		res = append(res, err)
 	}
 	if len(res) > 0 {
@@ -77,25 +66,6 @@ func (o *GetDegreesOfSeparationParams) bindActorName(rawData []string, hasKey bo
 	// Required: true
 	// Parameter is provided by construction from the route
 	o.ActorName = raw
-
-	return nil
-}
-
-// bindCastRestriction binds and validates parameter CastRestriction from path.
-func (o *GetDegreesOfSeparationParams) bindCastRestriction(rawData []string, hasKey bool, formats strfmt.Registry) error {
-	var raw string
-	if len(rawData) > 0 {
-		raw = rawData[len(rawData)-1]
-	}
-
-	// Required: true
-	// Parameter is provided by construction from the route
-
-	value, err := swag.ConvertInt64(raw)
-	if err != nil {
-		return errors.InvalidType("castRestriction", "path", "int64", raw)
-	}
-	o.CastRestriction = value
 
 	return nil
 }

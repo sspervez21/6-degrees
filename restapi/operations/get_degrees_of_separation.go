@@ -29,7 +29,7 @@ func NewGetDegreesOfSeparation(ctx *middleware.Context, handler GetDegreesOfSepa
 	return &GetDegreesOfSeparation{Context: ctx, Handler: handler}
 }
 
-/* GetDegreesOfSeparation swagger:route GET /calculate_degrees/{actorName}/{castRestriction} getDegreesOfSeparation
+/* GetDegreesOfSeparation swagger:route GET /calculate_degrees/{actorName} getDegreesOfSeparation
 
 GetDegreesOfSeparation get degrees of separation API
 
