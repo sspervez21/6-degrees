@@ -1,0 +1,58 @@
+consumes:
+- application/json
+info:
+  description: 6 degrees of Kevin Bacon microservice
+  title: 6degrees
+  version: 0.1.0
+produces:
+- application/json
+schemes:
+- http
+swagger: "2.0"
+paths:
+  /calculate_degrees/{actorName}/{castRestriction}:
+    get:
+      operationId: "GetDegreesOfSeparation"
+      parameters:
+        - in: path
+          name: actorName
+          required: true
+          type: string
+        - in: path
+          name: castRestriction
+          required: true
+          type: integer
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ActorFound"
+        404:
+          description: "Actor not found within 6 degrees of Kevin Bacon"
+          schema:
+            $ref: "#/definitions/ActorNotFound"
+      
+definitions:
+  ActorFound:
+    type: object
+    properties:
+      degreesOfSeparation:
+        type: integer
+      movies:
+        type: array
+        items:
+          $ref: "#/definitions/Actor"
+    description: "Actor Found"
+  Actor:
+    type: object
+    properties:
+      name:
+        type: string
+      movie:
+        type: string
+  ActorNotFound:
+    type: object
+    properties:
+      message:
+        type: string
+    description: "Actor Not Found"
